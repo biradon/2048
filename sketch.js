@@ -87,7 +87,7 @@ function keyPressed() {
     flipped = true
     rotated = true
   } else {
-    play = false
+    played = false
   }
 
 
@@ -105,8 +105,6 @@ function keyPressed() {
     }
 
     if (rotated) {
-      grid = rotateGrid(grid)
-      grid = rotateGrid(grid)
       grid = rotateGrid(grid)
     }
 
