@@ -91,25 +91,27 @@ function keyPressed() {
   let rotated = false
   let played = true
 
-
-
-  if (keyCode === DOWN_ARROW) {
-  // DO NOTHING
-  } else if (keyCode === UP_ARROW) {
-    grid = flipGrid(grid)
-    flipped = true
-  } else if (keyCode === RIGHT_ARROW) {
-    grid = rotateGrid(grid)
-    rotated = true
-  } else if (keyCode === LEFT_ARROW) {
-    grid = rotateGrid(grid)
-    grid = flipGrid(grid)
-    flipped = true
-    rotated = true
-  } else {
-    played = false
+  switch (keyCode) {
+    case DOWN_ARROW:
+      // DO Nothing
+      break;
+    case UP_ARROW:
+      grid = flipGrid(grid)
+      flipped = true
+      break;
+    case RIGHT_ARROW:
+      grid = rotateGrid(grid)
+      rotated = true
+      break;
+    case LEFT_ARROW:
+      grid = rotateGrid(grid)
+      grid = flipGrid(grid)
+      flipped = true
+      rotated = true
+      break;
+    default:
+      played = false
   }
-
 
   if (played) {
 
@@ -231,6 +233,9 @@ function combine(row) {
     let b = row[i - 1]
     if (a == b) {
       row[i] = a + b
+      if (row[i] == 2048) {
+        console.log("YOU WON")
+      }
       score += row[i]
       row[i- 1] = 0
     }
